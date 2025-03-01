@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FoodLogger.Application
 {
-    interface IFoodRepository
+    public interface IFoodRepository
     {
         List<Food> GetAllFoods();
     }
