@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FoodLogger.Application
 {
-    class FoodService : IFoodService
+    public class FoodService : IFoodService
     {
         public IFoodRepository _foodRepository { get; set; }
         public FoodService(IFoodRepository foodRepository)
