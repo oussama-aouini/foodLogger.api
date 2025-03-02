@@ -19,6 +19,11 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+
+    app.UseReDoc(options =>
+    {
+        options.SpecUrl = "/openapi/v1.json";
+    });
     app.MapScalarApiReference();
 }
 
