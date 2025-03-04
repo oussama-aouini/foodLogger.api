@@ -5,7 +5,7 @@ namespace FoodLogger.Infrastrcuture
 {
     public class FoodRepository : IFoodRepository
     {
-        private AppDbContext _appDbContext;
+        private readonly AppDbContext _appDbContext;
 
         public FoodRepository(AppDbContext appDbContext)
         {

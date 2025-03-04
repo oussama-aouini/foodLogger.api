@@ -8,7 +8,7 @@ namespace FoodLogger.API.Controllers
     [Route("api/[controller]")]
     public class FoodController : ControllerBase
     {
-        public IFoodService _foodService;
+        public readonly IFoodService _foodService;
 
         public FoodController(IFoodService foodService)
         {

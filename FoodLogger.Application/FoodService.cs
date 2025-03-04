@@ -9,7 +9,8 @@ namespace FoodLogger.Application
 {
     public class FoodService : IFoodService
     {
-        public IFoodRepository _foodRepository { get; set; }
+        public readonly IFoodRepository _foodRepository;
+
         public FoodService(IFoodRepository foodRepository)
         {
             _foodRepository = foodRepository;
