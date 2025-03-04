@@ -5,15 +5,24 @@ namespace FoodLogger.Infrastrcuture
 {
     public class FoodRepository : IFoodRepository
     {
-        public static List<Food> foods = new List<Food>()
+        private AppDbContext _appDbContext;
+
+        public FoodRepository(AppDbContext appDbContext)
         {
-            new Food() { Id = 1, Name = "Apple", Calories = 95, Protein = 0, Carbs = 25, Fats = 0 },
-            new Food() { Id = 2, Name = "Banana", Calories = 105, Protein = 1, Carbs = 27, Fats = 0 },
-        };
+            _appDbContext = appDbContext;
+        }
+
+        public Food AddFood(Food food)
+        {
+            _appDbContext.Foods.Add(food);
+            _appDbContext.SaveChanges();
+
+            return food;
+        }
 
         public List<Food> GetAllFoods()
         {
-            return foods;
+            return _appDbContext.Foods.ToList();
         }
     }
 }

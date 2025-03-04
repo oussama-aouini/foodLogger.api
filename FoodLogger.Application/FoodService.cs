@@ -20,5 +20,12 @@ namespace FoodLogger.Application
             var foods = _foodRepository.GetAllFoods();
             return foods;
         }
+
+        public Food AddFood(Food food)
+        {
+            _foodRepository.AddFood(food);
+
+            return food;
+        }
     }
 }

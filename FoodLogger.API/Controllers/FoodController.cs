@@ -9,6 +9,7 @@ namespace FoodLogger.API.Controllers
     public class FoodController : ControllerBase
     {
         public IFoodService _foodService;
+
         public FoodController(IFoodService foodService)
         {
             _foodService = foodService;
@@ -19,6 +20,13 @@ namespace FoodLogger.API.Controllers
         {
             var foods = _foodService.GetAllFood();
             return Ok(foods);
+        }
+
+        [HttpPost]
+        public ActionResult<Food> Post([FromBody] Food food)
+        {
+            var newFood = _foodService.AddFood(food);
+            return Ok(newFood);
         }
     }
 }
