@@ -1,5 +1,6 @@
 ﻿using FoodLogger.Application;
 using FoodLogger.Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FoodLogger.API.Controllers
@@ -27,6 +28,16 @@ namespace FoodLogger.API.Controllers
         {
             var newFood = _foodService.AddFood(food);
             return Ok(newFood);
+        }
+
+        [HttpGet("private")]
+        [Authorize]
+        public IActionResult Private()
+        {
+            return Ok(new
+            {
+                Message = "Hello from a private endpoint!"
+            });
         }
     }
 }
