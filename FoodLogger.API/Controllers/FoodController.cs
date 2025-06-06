@@ -7,6 +7,7 @@ namespace FoodLogger.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class FoodController : ControllerBase
     {
         public readonly IFoodService _foodService;
@@ -28,16 +29,6 @@ namespace FoodLogger.API.Controllers
         {
             var newFood = _foodService.AddFood(food);
             return Ok(newFood);
-        }
-
-        [HttpGet("private")]
-        [Authorize]
-        public IActionResult Private()
-        {
-            return Ok(new
-            {
-                Message = "Hello from a private endpoint!"
-            });
         }
     }
 }
