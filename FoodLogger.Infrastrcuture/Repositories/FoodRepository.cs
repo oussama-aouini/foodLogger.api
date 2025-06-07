@@ -1,7 +1,8 @@
 ﻿using FoodLogger.Application;
 using FoodLogger.Domain;
+using FoodLogger.Infrastrcuture.Data;
 
-namespace FoodLogger.Infrastrcuture
+namespace FoodLogger.Infrastructure.Repositories
 {
     public class FoodRepository : IFoodRepository
     {

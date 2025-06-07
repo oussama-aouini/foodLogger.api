@@ -1,5 +1,6 @@
 using FoodLogger.Application;
-using FoodLogger.Infrastrcuture;
+using FoodLogger.Infrastrcuture.Data;
+using FoodLogger.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
