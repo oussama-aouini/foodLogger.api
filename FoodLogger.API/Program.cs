@@ -1,4 +1,5 @@
 using FoodLogger.Application;
+using FoodLogger.Application.Interfaces;
 using FoodLogger.Infrastrcuture.Data;
 using FoodLogger.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -28,7 +29,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<Application>());
 
-builder.Services.AddScoped<IFoodService, FoodService>();
 builder.Services.AddScoped<IFoodRepository, FoodRepository>();
 
 var app = builder.Build();

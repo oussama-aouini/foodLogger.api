@@ -1,5 +1,8 @@
 ﻿using FoodLogger.Application;
+using FoodLogger.Application.Foods.Commands.AddFoodCommand;
+using FoodLogger.Application.Foods.Queries.GetAllFoodQuery;
 using FoodLogger.Domain;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,28 +10,30 @@ namespace FoodLogger.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
+    //[Authorize]
     public class FoodController : ControllerBase
     {
-        public readonly IFoodService _foodService;
+        private readonly IMediator _mediator;
 
-        public FoodController(IFoodService foodService)
+        public FoodController(IMediator mediator)
         {
-            _foodService = foodService;
+            _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
 
         [HttpGet]
-        public ActionResult<List<Food>> Get()
+        public async Task<ActionResult<List<Food>>> Get()
         {
-            var foods = _foodService.GetAllFood();
-            return Ok(foods);
+            var query = new GetAllFoodQuery();
+            var result = await _mediator.Send(query);
+            return Ok(result);
         }
 
         [HttpPost]
-        public ActionResult<Food> Post([FromBody] Food food)
+        public async Task<ActionResult<Food>> Post(AddFoodCommand food)
         {
-            var newFood = _foodService.AddFood(food);
-            return Ok(newFood);
+            var response = await _mediator.Send(food);
+
+            return Ok(response);
         }
     }
 }

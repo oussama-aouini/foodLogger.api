@@ -1,6 +1,6 @@
 ﻿using FoodLogger.Domain;
 
-namespace FoodLogger.Application
+namespace FoodLogger.Application.Interfaces
 {
     public interface IFoodRepository
     {

@@ -1,4 +1,4 @@
-﻿using FoodLogger.Application;
+﻿using FoodLogger.Application.Interfaces;
 using FoodLogger.Domain;
 using FoodLogger.Infrastrcuture.Data;
 
