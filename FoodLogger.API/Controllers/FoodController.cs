@@ -1,5 +1,4 @@
-﻿using FoodLogger.Application;
-using FoodLogger.Application.Foods.Commands.AddFoodCommand;
+﻿using FoodLogger.Application.Foods.Commands.AddFoodCommand;
 using FoodLogger.Application.Foods.Queries.GetAllFoodQuery;
 using FoodLogger.Domain;
 using MediatR;
