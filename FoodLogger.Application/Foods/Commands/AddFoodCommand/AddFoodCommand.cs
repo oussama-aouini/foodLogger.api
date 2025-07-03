@@ -7,6 +7,5 @@ namespace FoodLogger.Application.Foods.Commands.AddFoodCommand
         int Calories,
         int Protein,
         int Carbs,
-        int Fats) : IRequest<Food> 
-    {}
+        int Fats) : IRequest<Food>;
 }

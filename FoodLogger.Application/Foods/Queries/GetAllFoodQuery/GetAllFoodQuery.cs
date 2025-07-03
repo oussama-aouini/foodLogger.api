@@ -3,6 +3,5 @@ using MediatR;
 
 namespace FoodLogger.Application.Foods.Queries.GetAllFoodQuery
 {
-    public record GetAllFoodQuery : IRequest<List<Food>>
-    {}
+    public record GetAllFoodQuery : IRequest<List<Food>>;
 }
