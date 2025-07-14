@@ -8,5 +8,15 @@
         public int Protein { get; set; }
         public int Carbs { get; set; }
         public int Fats { get; set; }
+
+        public void UpdateCalories(int newCalories)
+        {
+            if (newCalories < 0)
+            {
+                throw new ArgumentException("Calories must be greater than zero");
+            }
+
+            Calories = newCalories;
+        }
     }
 }

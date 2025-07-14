@@ -5,7 +5,7 @@ using MediatR;
 
 namespace FoodLogger.Application.Foods.Commands.AddFoodCommand
 {
-    internal class AddFoodHandler : IRequestHandler<AddFoodCommand, Food>
+    public class AddFoodHandler : IRequestHandler<AddFoodCommand, Food>
     {
         private readonly IFoodRepository _foodRepository;
 
