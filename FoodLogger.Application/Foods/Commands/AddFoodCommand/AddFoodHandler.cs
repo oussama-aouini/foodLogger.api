@@ -17,9 +17,10 @@ namespace FoodLogger.Application.Foods.Commands.AddFoodCommand
         public Task<Food> Handle(AddFoodCommand request, CancellationToken cancellationToken)
         {
             // TODO: add exception handeling 
-            _foodRepository.AddFood(request.ToFood());
+            var food = request.ToFood();
+            _foodRepository.AddFood(food);
 
-            return Task.FromResult(request.ToFood());
+            return Task.FromResult(food);
         }
     }
 }
