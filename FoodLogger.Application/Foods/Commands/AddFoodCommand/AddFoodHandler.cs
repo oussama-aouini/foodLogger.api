@@ -5,7 +5,7 @@ using MediatR;
 
 namespace FoodLogger.Application.Foods.Commands.AddFoodCommand
 {
-    internal class AddFoodHandler : IRequestHandler<AddFoodCommand, Food>
+    public class AddFoodHandler : IRequestHandler<AddFoodCommand, Food>
     {
         private readonly IFoodRepository _foodRepository;
 
@@ -17,9 +17,10 @@ namespace FoodLogger.Application.Foods.Commands.AddFoodCommand
         public Task<Food> Handle(AddFoodCommand request, CancellationToken cancellationToken)
         {
             // TODO: add exception handeling 
-            _foodRepository.AddFood(request.ToFood());
+            var food = request.ToFood();
+            _foodRepository.AddFood(food);
 
-            return Task.FromResult(request.ToFood());
+            return Task.FromResult(food);
         }
     }
 }

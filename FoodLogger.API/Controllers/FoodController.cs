@@ -4,6 +4,7 @@ using FoodLogger.Domain;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection.Metadata.Ecma335;
 
 namespace FoodLogger.API.Controllers
 {
@@ -28,11 +29,19 @@ namespace FoodLogger.API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Food>> Post(AddFoodCommand food)
+        public async Task<ActionResult<Food>> Post(AddFoodCommand command)
         {
-            var response = await _mediator.Send(food);
+            var response = await _mediator.Send(command);
 
             return Ok(response);
         }
+
+        //[HttpDelete]
+        //public async Task<ActionResult<Food>> DeleteFood()
+        //{
+        //    var response = await _mediator.Send(command);
+
+        //    return;
+        //}
     }
 }
