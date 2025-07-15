@@ -26,20 +26,23 @@ namespace FoodLogger.Application.Tests
         {
             // Arrange
             var command = _fixture.Create<AddFoodCommand>();
+            var food = command.ToFood();
 
             _mockRepository
                 .Setup(x => x.AddFood(It.IsAny<Food>()))
-                .Returns(command.ToFood());
+                .Returns(food);
 
             // Act 
             var result = await _handler.Handle(command, CancellationToken.None);
 
             // Assert 
-            result.Should().Be(command.ToFood());
+            result.Should().BeEquivalentTo(food);
             _mockRepository.Verify(x => x.AddFood(It.Is<Food>(f => 
                 f.Calories == command.Calories &&
-                f.Name == command.Name
-            )));
+                f.Fats == command.Fats &&
+                f.Name == command.Name &&
+                f.Protein == command.Protein
+            )), Times.Once);
         }
     }
 }
