@@ -1,29 +1,73 @@
-﻿using FoodLogger.Application.Interfaces;
-using FoodLogger.Domain;
+﻿using FoodLogger.Application.common;
+using FoodLogger.Application.Interfaces;
+using FoodLogger.Domain.Entities;
 using FoodLogger.Infrastrcuture.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace FoodLogger.Infrastructure.Repositories
 {
     public class FoodRepository : IFoodRepository
     {
-        private readonly AppDbContext _appDbContext;
+        private readonly AppDbContext _context;
+        private readonly ILogger<FoodRepository> _logger;
 
-        public FoodRepository(AppDbContext appDbContext)
+        public FoodRepository(AppDbContext appDbContext, ILogger<FoodRepository> logger)
         {
-            _appDbContext = appDbContext;
+            _context = appDbContext;
+            _logger = logger;
         }
 
-        public Food AddFood(Food food)
+        public async Task<Result<IEnumerable<Food>>> GetAllAsync()
         {
-            _appDbContext.Foods.Add(food);
-            _appDbContext.SaveChanges();
+            try
+            {
+                var foods = await _context.Foods.ToListAsync();
 
-            return food;
+                return Result<IEnumerable<Food>>.Success(foods);
+            }
+            catch (Exception ex) 
+            {
+                _logger.LogError(ex, "Error occurred while retrieving all foods");
+                return Result<IEnumerable<Food>>.Failure("An error occurred while retrieving foods");
+            }
         }
 
-        public List<Food> GetAllFoods()
+        public async Task<Result<Food>> CreateAsync(Food food)
         {
-            return _appDbContext.Foods.ToList();
+            try
+            {
+                _context.Foods.Add(food);
+                await _context.SaveChangesAsync();
+
+                return Result<Food>.Success(food);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while creating food");
+                return Result<Food>.Failure("An error occurred while creating the food");
+            }
         }
+
+        public Task<Result> DeleteAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Result<bool>> ExistsAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Result<Food>> GetByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Result<Food>> UpdateAsync(Food food)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

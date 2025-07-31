@@ -1,4 +1,4 @@
-﻿using FoodLogger.Domain;
+﻿using FoodLogger.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace FoodLogger.Infrastrcuture.Data

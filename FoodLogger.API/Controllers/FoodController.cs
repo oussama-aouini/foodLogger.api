@@ -1,6 +1,6 @@
-﻿using FoodLogger.Application.Foods.Commands.AddFoodCommand;
+﻿using FoodLogger.Application.Foods.Commands.CreateFoodCommand;
 using FoodLogger.Application.Foods.Queries.GetAllFoodQuery;
-using FoodLogger.Domain;
+using FoodLogger.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -21,27 +21,46 @@ namespace FoodLogger.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Food>>> Get()
+        public async Task<IActionResult> GetAll()
         {
             var query = new GetAllFoodQuery();
             var result = await _mediator.Send(query);
-            return Ok(result);
+
+            if (!result.IsSuccess) 
+            {
+                return StatusCode(500, new {message = result.ErrorMessage});
+            }
+
+            return Ok(result.Data);
         }
+
+        //[HttpGet("{id}")]
+        //public async Task<IActionResult> GetById(int id)
+        //{
+        //    if (id <= 0)
+        //    {
+        //        return BadRequest(new { message = "Invalid food ID" });
+        //    }
+
+
+        //}
 
         [HttpPost]
-        public async Task<ActionResult<Food>> Post(AddFoodCommand command)
+        public async Task<ActionResult<Food>> Post(CreateFoodCommand command)
         {
-            var response = await _mediator.Send(command);
+            var result = await _mediator.Send(command);
 
-            return Ok(response);
+            if (!result.IsSuccess) 
+            {
+                if (result.Errors.Any()) 
+                { 
+                    return BadRequest(new { errors = result.Errors});
+                }
+                return StatusCode(500, new { message = result.ErrorMessage});
+            }
+
+            //return CreatedAtAction(nameof(GetById), new {id = result.Data!.Id}, result.Data);
+            return Ok(result.Data);
         }
-
-        //[HttpDelete]
-        //public async Task<ActionResult<Food>> DeleteFood()
-        //{
-        //    var response = await _mediator.Send(command);
-
-        //    return;
-        //}
     }
 }

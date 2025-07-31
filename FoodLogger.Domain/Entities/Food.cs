@@ -1,4 +1,4 @@
-﻿namespace FoodLogger.Domain
+﻿namespace FoodLogger.Domain.Entities
 {
     public class Food
     {

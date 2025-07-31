@@ -1,9 +1,9 @@
 ﻿using AutoFixture;
 using FluentAssertions;
-using FoodLogger.Application.Foods.Commands.AddFoodCommand;
+using FoodLogger.Application.Foods.Commands.CreateFoodCommand;
 using FoodLogger.Application.Interfaces;
 using FoodLogger.Application.Mappers;
-using FoodLogger.Domain;
+using FoodLogger.Domain.Entities;
 using Moq;
 
 namespace FoodLogger.Application.Tests
@@ -11,7 +11,7 @@ namespace FoodLogger.Application.Tests
     public class AddFoodCommandHandlerTests
     {
         private readonly Mock<IFoodRepository> _mockRepository;
-        private readonly AddFoodHandler _handler;
+        private readonly CreateFoodCommandHandler _handler;
         private readonly Fixture _fixture;
 
         public AddFoodCommandHandlerTests()
@@ -25,7 +25,7 @@ namespace FoodLogger.Application.Tests
         public async Task Handle_ValidCommand_ShouldAddFood()
         {
             // Arrange
-            var command = _fixture.Create<AddFoodCommand>();
+            var command = _fixture.Create<CreateFoodCommand>();
             var food = command.ToFood();
 
             _mockRepository

@@ -1,5 +1,6 @@
 ﻿using AutoFixture;
 using FluentAssertions;
+using FoodLogger.Domain.Entities;
 
 namespace FoodLogger.Domain.Tests
 {

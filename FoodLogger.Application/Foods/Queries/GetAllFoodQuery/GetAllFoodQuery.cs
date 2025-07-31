@@ -1,7 +1,7 @@
-﻿using FoodLogger.Domain;
+﻿using FoodLogger.Application.common;
 using MediatR;
 
 namespace FoodLogger.Application.Foods.Queries.GetAllFoodQuery
 {
-    public record GetAllFoodQuery : IRequest<List<Food>>;
+    public record GetAllFoodQuery : IRequest<Result<IEnumerable<GetAllFoodQueryResult>>>;
 }
