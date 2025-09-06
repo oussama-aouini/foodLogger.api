@@ -1,6 +1,6 @@
 using FoodLogger.Application;
 using FoodLogger.Application.Interfaces;
-using FoodLogger.Infrastrcuture.Data;
+using FoodLogger.Infrastructure.Data;
 using FoodLogger.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -15,8 +15,7 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), 
-        b => b.MigrationsAssembly("FoodLogger.API"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
 // Add Authentication Services

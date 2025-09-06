@@ -1,7 +1,7 @@
 ﻿using FoodLogger.Application.common;
 using FoodLogger.Application.Interfaces;
 using FoodLogger.Domain.Entities;
-using FoodLogger.Infrastrcuture.Data;
+using FoodLogger.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 

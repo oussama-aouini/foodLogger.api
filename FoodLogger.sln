@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodLogger.Domain", "FoodLo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodLogger.Application", "FoodLogger.Application\FoodLogger.Application.csproj", "{5F0DA9F9-CC5C-4552-8188-EEE52712DC3A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodLogger.Infrastrcuture", "FoodLogger.Infrastrcuture\FoodLogger.Infrastrcuture.csproj", "{78AA0F74-ADFA-46DC-9542-CAFB2DD8C6D2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodLogger.Infrastructure", "FoodLogger.Infrastrcuture\FoodLogger.Infrastructure.csproj", "{78AA0F74-ADFA-46DC-9542-CAFB2DD8C6D2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodLogger.API", "FoodLogger.API\FoodLogger.API.csproj", "{4E00BD97-BF62-4998-98F7-EFE4A06A8879}"
 EndProject

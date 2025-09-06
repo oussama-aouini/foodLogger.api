@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FoodLogger.Application\FoodLogger.Application.csproj" />
-    <ProjectReference Include="..\FoodLogger.Infrastrcuture\FoodLogger.Infrastrcuture.csproj" />
+    <ProjectReference Include="..\FoodLogger.Infrastrcuture\FoodLogger.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

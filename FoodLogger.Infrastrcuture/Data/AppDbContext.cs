@@ -1,7 +1,7 @@
 ﻿using FoodLogger.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace FoodLogger.Infrastrcuture.Data
+namespace FoodLogger.Infrastructure.Data
 {
     public class AppDbContext : DbContext
     {
