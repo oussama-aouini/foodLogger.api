@@ -2,7 +2,8 @@
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
-// Add-Migration InitialCreate -Project FoodLogger.Infrastrcuture -StartupProject FoodLogger.API -OutputDir Data/Migrations
+// Add-Migration MigrationName -Project FoodLogger.Infrastructure -StartupProject FoodLogger.API -OutputDir Data/Migrations
+// Update-Database -Project FoodLogger.Infrastructure -StartupProject FoodLogger.API
 namespace FoodLogger.Infrastructure.Data
 {
     public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>

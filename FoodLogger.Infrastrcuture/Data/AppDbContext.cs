@@ -12,5 +12,6 @@ namespace FoodLogger.Infrastructure.Data
         }
 
         public DbSet<Food> Foods { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

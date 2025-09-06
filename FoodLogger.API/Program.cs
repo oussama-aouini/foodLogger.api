@@ -40,6 +40,7 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddScoped<IFoodRepository, FoodRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 var app = builder.Build();
 

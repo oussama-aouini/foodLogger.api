@@ -2,23 +2,16 @@
 using FoodLogger.Application.Foods.Queries.GetAllFoodQuery;
 using FoodLogger.Domain.Entities;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Reflection.Metadata.Ecma335;
 
 namespace FoodLogger.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
     //[Authorize]
-    public class FoodController : ControllerBase
+    public class FoodController(IMediator mediator) : ControllerBase
     {
-        private readonly IMediator _mediator;
-
-        public FoodController(IMediator mediator)
-        {
-            _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
-        }
+        private readonly IMediator _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
@@ -26,9 +19,9 @@ namespace FoodLogger.API.Controllers
             var query = new GetAllFoodQuery();
             var result = await _mediator.Send(query);
 
-            if (!result.IsSuccess) 
+            if (!result.IsSuccess)
             {
-                return StatusCode(500, new {message = result.ErrorMessage});
+                return StatusCode(500, new { message = result.ErrorMessage });
             }
 
             return Ok(result.Data);
@@ -50,13 +43,13 @@ namespace FoodLogger.API.Controllers
         {
             var result = await _mediator.Send(command);
 
-            if (!result.IsSuccess) 
+            if (!result.IsSuccess)
             {
-                if (result.Errors.Any()) 
-                { 
-                    return BadRequest(new { errors = result.Errors});
+                if (result.Errors.Any())
+                {
+                    return BadRequest(new { errors = result.Errors });
                 }
-                return StatusCode(500, new { message = result.ErrorMessage});
+                return StatusCode(500, new { message = result.ErrorMessage });
             }
 
             //return CreatedAtAction(nameof(GetById), new {id = result.Data!.Id}, result.Data);
