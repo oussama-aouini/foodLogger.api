@@ -1,5 +1,12 @@
 ﻿namespace FoodLogger.Domain.Entities
 {
+
+    // DDD 
+    // 1 - Entity: has an id, id doesn't change when attributes change
+    // 2 - value object: immutable, equality based on values, no id
+    // 3 - aggregate: a cluster of related objects reated as a single unit
+    // 4 - Aggregate root: the entry point of an aggregate, ensures invariants
+
     public class User
     {
         public int Id { get; set; }
