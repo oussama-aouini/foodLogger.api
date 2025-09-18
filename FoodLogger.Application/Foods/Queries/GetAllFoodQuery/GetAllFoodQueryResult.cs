@@ -8,4 +8,6 @@
         public int Carbs { get; set; }
         public int Fats { get; set; }
     }
+
+    // TODO move mapping logic here add implicit operator here 
 }

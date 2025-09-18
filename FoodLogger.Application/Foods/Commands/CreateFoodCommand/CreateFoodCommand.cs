@@ -10,3 +10,5 @@ namespace FoodLogger.Application.Foods.Commands.CreateFoodCommand
         int Carbs,
         int Fats) : IRequest<Result<CreateFoodCommandResult>>;
 }
+
+// TODO Add validators in same file as commands and queries simpler 
