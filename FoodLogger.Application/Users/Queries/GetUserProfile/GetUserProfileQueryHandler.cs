@@ -1,7 +1,6 @@
 ﻿using FoodLogger.Application.common;
-using FoodLogger.Application.Interfaces;
+using FoodLogger.Application.common.Interfaces;
 using FoodLogger.Application.Mapping;
-using FoodLogger.Domain.Entities;
 using MediatR;
 
 namespace FoodLogger.Application.Users.Queries.GetUserProfile

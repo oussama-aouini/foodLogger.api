@@ -1,7 +1,6 @@
-﻿using FoodLogger.Application.common;
-using FoodLogger.Domain.Entities;
+﻿using FoodLogger.Domain.Entities;
 
-namespace FoodLogger.Application.Interfaces
+namespace FoodLogger.Application.common.Interfaces
 {
     public interface IFoodRepository
     {

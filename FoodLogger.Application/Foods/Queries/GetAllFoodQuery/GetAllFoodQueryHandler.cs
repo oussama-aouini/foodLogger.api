@@ -1,6 +1,6 @@
 ﻿using FoodLogger.Application.common;
+using FoodLogger.Application.common.Interfaces;
 using FoodLogger.Application.Foods.Commands.CreateFoodCommand;
-using FoodLogger.Application.Interfaces;
 using FoodLogger.Application.Mappers;
 using MediatR;
 using Microsoft.Extensions.Logging;
