@@ -1,5 +1,5 @@
 ﻿using FoodLogger.Application.common;
-using FoodLogger.Application.Interfaces;
+using FoodLogger.Application.common.Interfaces;
 using FoodLogger.Application.Mappers;
 using FoosdLogger.Application.Foods.Commands.CreateFoodCommand;
 using MediatR;
