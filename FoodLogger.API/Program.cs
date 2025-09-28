@@ -1,7 +1,10 @@
+using FluentValidation;
 using FoodLogger.Application;
+using FoodLogger.Application.common.Behaviors;
 using FoodLogger.Application.common.Interfaces;
 using FoodLogger.Infrastructure.Data;
 using FoodLogger.Infrastructure.Repositories;
+using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
@@ -26,7 +29,15 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         options.Audience = builder.Configuration["Auth0:Audience"];
     });
 
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<Application>());
+// Register meditr + fluentvalidation pipeline behaviour
+builder.Services.AddMediatR(cfg =>
+{
+    cfg.RegisterServicesFromAssemblyContaining<Application>();
+    cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+});
+
+// Register Validators
+builder.Services.AddValidatorsFromAssemblyContaining<Application>();
 
 // Allowed origins
 builder.Services.AddCors(options =>
