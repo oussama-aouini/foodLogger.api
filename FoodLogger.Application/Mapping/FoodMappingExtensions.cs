@@ -1,7 +1,6 @@
 ﻿using FoodLogger.Application.Foods.Commands.CreateFoodCommand;
 using FoodLogger.Application.Foods.Queries.GetAllFoodQuery;
 using FoodLogger.Domain.Entities;
-using FoosdLogger.Application.Foods.Commands.CreateFoodCommand;
 
 namespace FoodLogger.Application.Mappers
 {
@@ -29,20 +28,6 @@ namespace FoodLogger.Application.Mappers
                 Fats = food.Fats,
                 Protein = food.Protein
             });
-        }
-
-        public static CreateFoodCommandResult ToCreateFoodCommandResult(this Food command)
-        {
-            return new CreateFoodCommandResult
-            {
-                Calories = command.Calories,
-                Carbs = command.Carbs,
-                Fats = command.Fats,
-                Protein = command.Protein,
-                Id = command.Id,
-                Name = command.Name,
-                
-            };
         }
     }
 }

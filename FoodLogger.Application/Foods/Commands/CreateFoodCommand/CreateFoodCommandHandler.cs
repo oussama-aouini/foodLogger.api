@@ -11,26 +11,15 @@ namespace FoodLogger.Application.Foods.Commands.CreateFoodCommand
     {
         private readonly IFoodRepository _foodRepository;
         private readonly ILogger<CreateFoodCommandHandler> _logger;
-        //private readonly IValidator<CreateFoodCommand> _validator;
 
-        public CreateFoodCommandHandler(IFoodRepository foodRepository, ILogger<CreateFoodCommandHandler> logger
-            //, IValidator<CreateFoodCommand> validator
-            )
+        public CreateFoodCommandHandler(IFoodRepository foodRepository, ILogger<CreateFoodCommandHandler> logger)
         {
             _foodRepository = foodRepository;
             _logger = logger;
-            //_validator = validator;
         }
 
         public async Task<Result<CreateFoodCommandResult>> Handle(CreateFoodCommand request, CancellationToken cancellationToken)
         {
-            //var validationResult = await _validator.ValidateAsync(request, cancellationToken);
-
-            //if (validationResult.IsValid)
-            //{
-            //    var errors = validationResult.Errors.Select(x => x.ErrorMessage).ToList();
-            //    return Result<CreateFoodCommandResult>.Failure(errors);
-            //}
 
             var food = request.ToFood();
             var result = await _foodRepository.CreateAsync(food);
@@ -41,7 +30,7 @@ namespace FoodLogger.Application.Foods.Commands.CreateFoodCommand
                 return Result<CreateFoodCommandResult>.Failure(result.ErrorMessage);
             }
 
-            var foodResult = result.Data!.ToCreateFoodCommandResult();
+            var foodResult = result.Data!;
             return Result<CreateFoodCommandResult>.Success(foodResult);
         }
     }
